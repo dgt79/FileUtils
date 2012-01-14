@@ -12,4 +12,5 @@ Gem::Specification.new do |s|
 	s.homepage    = "http://github.com/dgt79/FileUtils"
 
 	s.files = Dir.glob("lib/**/*.rb")
+	s.test_files  = Dir.glob("test/**/*.rb")
 end
