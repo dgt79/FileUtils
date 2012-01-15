@@ -52,7 +52,7 @@ module Dgt
 			if File.directory? src
 				copy_dir(src, dest, &block)
 			else
-				copy_file(dest, src)
+				copy_file(dest, src, &block)
 			end
 		end
 

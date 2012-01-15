@@ -2,12 +2,12 @@ $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require 'file_utils/version'
 
 Gem::Specification.new do |s|
-	s.name        = "FileUtils"
+	s.name        = "dgt_file_utils"
 	s.version     = Dgt::VERSION
 	s.authors     = ["Dan Talpau"]
 	s.email       = ["dan.talpau@gmail.com"]
 
-	s.summary     = "FileUtils in Ruby"
+	s.summary     = "extra methods for working with files"
 	s.description = "Contains useful methods when working with files"
 	s.homepage    = "http://github.com/dgt79/FileUtils"
 
