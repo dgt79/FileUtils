@@ -1,10 +1,10 @@
 require 'test/unit'
-require "fileutils"
-require "file_utils"		# Dgt::FileUtils
+require File.dirname(__FILE__) + '/../lib/file_utils' # Dgt::FileUtils
 
 class TestFileUtils < Test::Unit::TestCase
 	OUTPUT = 'output'
 	def setup
+		FileUtils.rm_rf(OUTPUT, secure: true) if File.directory? OUTPUT
 		Dir.mkdir OUTPUT
 	end
 
@@ -36,6 +36,7 @@ class TestFileUtils < Test::Unit::TestCase
 	end
 
 	def test_copy_directory
+		puts "pwd - #{Dir.pwd}"
 		files = [] << 'test/fixtures/test_dir/a' << 'test/fixtures/test_dir/b' << 'test/fixtures/test_dir/c.txt'
 
 		Dgt::FileUtils.new.copy files, OUTPUT
@@ -48,5 +49,11 @@ class TestFileUtils < Test::Unit::TestCase
 		assert File.exists?("#{OUTPUT}/b")
 		assert File.exists?("#{OUTPUT}/b/b.txt")
 		assert File.exists?("#{OUTPUT}/c.txt")
+	end
+
+	def test_delete_directory
+		src = "#{OUTPUT}/DELETE_TEST"
+		Dir.mkdir src
+		Dgt::FileUtils.new.delete src
 	end
 end
